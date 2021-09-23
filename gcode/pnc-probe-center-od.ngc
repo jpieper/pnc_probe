@@ -1,11 +1,13 @@
-( Pocket NC Probe Routine )
+( Pocket NC OD Probe Routine )
 ( )
 ( Set the current working X/Y coordinates to be 0,0 at the center of )
 ( the outer diameter of a circle positioned roughly at the center of the )
 ( current machine X/Y coordinates )
 ( )
 ( The initial X/Y position is used to determine which axis and )
-( which side is probed first. )
+( which side is probed first.  It is recommended to start from the )
+( position closest to the Y gantry to avoid probe surprises when it )
+( is moved there later. )
 
 ( The current coordinate frame may be any of G54-G59.3 and the )
 ( current units may be either imperial or metric. )
@@ -47,8 +49,6 @@ o120 IF [#<initial_y> GT 0]
 o120 ELSE
 #<initial_y_abs> = [-1 * #<initial_y>]
 o120 ENDIF
-
-(debug,initial_x=#<initial_x_abs>,initial_y=#<initial_y_abs>)
 
 ( We use the subroutine parameters 10 and on as a transient array )
 ( Here it stores the set of tests to perform )
@@ -106,8 +106,6 @@ o200 REPEAT [4]
 #<axis> = [#[10 + [#<pindex> * 2]]]
 #<direction> = [#[11 + [#<pindex> * 2]]]
 
-(debug,index=#<pindex> axis=#<axis>  dir=#<direction>)
-
 #<start_pos> = [-1 * [#<radius>] * [#<direction>]]
 
 ( The end of each probing results in a retract, however the first time )
@@ -159,8 +157,6 @@ o400 ELSEIF [#<_coord_system> GE 591]
 o400 ELSE
 #<p_coord> = [#<_coord_system>]
 o400 ENDIF
-
-(debug,#<p_coord>)
 
 
 ( And now set our current position to be 0, 0 )
