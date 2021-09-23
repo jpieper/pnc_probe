@@ -317,25 +317,6 @@ Source: &lt;a href=http://de.farnell.com/molex/0446200002/buchse-rj45-geschirmt/
 <wire x1="6.5" y1="-13" x2="6.5" y2="1" width="0.127" layer="21"/>
 <wire x1="6.5" y1="1" x2="-6.5" y2="1" width="0.127" layer="21"/>
 </package>
-<package name="VSSOP8">
-<smd name="2" x="-1.9" y="0.325" dx="1.1" dy="0.4" layer="1"/>
-<smd name="3" x="-1.9" y="-0.325" dx="1.1" dy="0.4" layer="1"/>
-<smd name="1" x="-1.9" y="0.975" dx="1.1" dy="0.4" layer="1"/>
-<smd name="4" x="-1.9" y="-0.975" dx="1.1" dy="0.4" layer="1"/>
-<smd name="7" x="1.9" y="0.325" dx="1.1" dy="0.4" layer="1"/>
-<smd name="6" x="1.9" y="-0.325" dx="1.1" dy="0.4" layer="1"/>
-<smd name="8" x="1.9" y="0.975" dx="1.1" dy="0.4" layer="1"/>
-<smd name="5" x="1.9" y="-0.975" dx="1.1" dy="0.4" layer="1"/>
-<wire x1="-2.1" y1="1.5" x2="-1.9" y2="1.5" width="0.127" layer="21"/>
-<wire x1="-1.9" y1="1.5" x2="2.1" y2="1.5" width="0.127" layer="21"/>
-<wire x1="2.1" y1="1.5" x2="2.1" y2="-1.5" width="0.127" layer="21"/>
-<wire x1="2.1" y1="-1.5" x2="-2.1" y2="-1.5" width="0.127" layer="21"/>
-<wire x1="-2.1" y1="-1.5" x2="-2.1" y2="1.3" width="0.127" layer="21"/>
-<wire x1="-2.1" y1="1.3" x2="-2.1" y2="1.5" width="0.127" layer="21"/>
-<wire x1="-2.1" y1="1.3" x2="-1.9" y2="1.3" width="0.127" layer="21"/>
-<wire x1="-1.9" y1="1.3" x2="-1.9" y2="1.5" width="0.127" layer="21"/>
-<text x="-2.1" y="1.8" size="0.8" layer="21" font="vector" ratio="10">&gt;NAME</text>
-</package>
 <package name="SSOP8">
 <smd name="2" x="-1.9" y="0.325" dx="1.1" dy="0.4" layer="1"/>
 <smd name="1" x="-1.9" y="0.975" dx="1.1" dy="0.4" layer="1"/>
@@ -355,6 +336,25 @@ Source: &lt;a href=http://de.farnell.com/molex/0446200002/buchse-rj45-geschirmt/
 <wire x1="-0.6" y1="1.1" x2="0.5" y2="1.1" width="0.127" layer="21"/>
 <wire x1="0.5" y1="1.1" x2="0.5" y2="1.5" width="0.127" layer="21"/>
 <text x="-1.7" y="2" size="0.8" layer="25" font="vector" ratio="10">&gt;NAME</text>
+</package>
+<package name="VSSOP8">
+<smd name="2" x="-2.1" y="0.325" dx="1.1" dy="0.4" layer="1"/>
+<smd name="3" x="-2.1" y="-0.325" dx="1.1" dy="0.4" layer="1"/>
+<smd name="1" x="-2.1" y="0.975" dx="1.1" dy="0.4" layer="1"/>
+<smd name="4" x="-2.1" y="-0.975" dx="1.1" dy="0.4" layer="1"/>
+<smd name="7" x="2.1" y="0.325" dx="1.1" dy="0.4" layer="1"/>
+<smd name="6" x="2.1" y="-0.325" dx="1.1" dy="0.4" layer="1"/>
+<smd name="8" x="2.1" y="0.975" dx="1.1" dy="0.4" layer="1"/>
+<smd name="5" x="2.1" y="-0.975" dx="1.1" dy="0.4" layer="1"/>
+<wire x1="-2.1" y1="1.5" x2="-1.9" y2="1.5" width="0.127" layer="21"/>
+<wire x1="-1.9" y1="1.5" x2="2.1" y2="1.5" width="0.127" layer="21"/>
+<wire x1="2.1" y1="1.5" x2="2.1" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="2.1" y1="-1.5" x2="-2.1" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="-2.1" y1="-1.5" x2="-2.1" y2="1.3" width="0.127" layer="21"/>
+<wire x1="-2.1" y1="1.3" x2="-2.1" y2="1.5" width="0.127" layer="21"/>
+<wire x1="-2.1" y1="1.3" x2="-1.9" y2="1.3" width="0.127" layer="21"/>
+<wire x1="-1.9" y1="1.3" x2="-1.9" y2="1.5" width="0.127" layer="21"/>
+<text x="-2.1" y="1.8" size="0.8" layer="21" font="vector" ratio="10">&gt;NAME</text>
 </package>
 </packages>
 <symbols>
@@ -1146,6 +1146,69 @@ Source: &lt;a href=http://de.farnell.com/molex/0446200002/buchse-rj45-geschirmt/
 </deviceset>
 </devicesets>
 </library>
+<library name="pinhead" urn="urn:adsk.eagle:library:325">
+<description>&lt;b&gt;Pin Header Connectors&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="1X01" urn="urn:adsk.eagle:footprint:22382/1" library_version="4">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="1.27" x2="-1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
+<pad name="1" x="0" y="0" drill="1.016" shape="octagon"/>
+<text x="-1.3462" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="1X01" urn="urn:adsk.eagle:package:22485/2" type="model" library_version="4">
+<description>PIN HEADER</description>
+<packageinstances>
+<packageinstance name="1X01"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="PINHD1" urn="urn:adsk.eagle:symbol:22381/1" library_version="4">
+<wire x1="-6.35" y1="-2.54" x2="1.27" y2="-2.54" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="-2.54" x2="1.27" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="2.54" x2="-6.35" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="-6.35" y1="2.54" x2="-6.35" y2="-2.54" width="0.4064" layer="94"/>
+<text x="-6.35" y="3.175" size="1.778" layer="95">&gt;NAME</text>
+<text x="-6.35" y="-5.08" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="1" x="-2.54" y="0" visible="pad" length="short" direction="pas" function="dot"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="PINHD-1X1" urn="urn:adsk.eagle:component:22540/3" prefix="JP" uservalue="yes" library_version="4">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="PINHD1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="1X01">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:22485/2"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="POPULARITY" value="64" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1204,6 +1267,11 @@ Source: &lt;a href=http://de.farnell.com/molex/0446200002/buchse-rj45-geschirmt/
 <attribute name="MPN" value="MF-CAP-0603-1uF"/>
 </part>
 <part name="GND9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="GND" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2"/>
+<part name="3V3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2"/>
+<part name="5V" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2"/>
+<part name="PRB" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2"/>
+<part name="GND10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1212,7 +1280,7 @@ Source: &lt;a href=http://de.farnell.com/molex/0446200002/buchse-rj45-geschirmt/
 3/4 = motor phase 2</text>
 <text x="81.28" y="81.28" size="1.778" layer="91">1/2 = motor phase 1
 3/4 = motor phase 2</text>
-<text x="-17.78" y="96.52" size="1.778" layer="97">Pocket NC - vers.by - Touch Probe Adapter
+<text x="-17.78" y="96.52" size="1.778" layer="97">Pocket NC - vers.by - Touch Probe Adapter r2
 (c) 2021 Josh Pieper - jjp@pobox.com
 Available under the Apache 2.0 License</text>
 </plain>
@@ -1297,6 +1365,25 @@ Available under the Apache 2.0 License</text>
 <instance part="GND9" gate="1" x="99.06" y="-86.36" smashed="yes">
 <attribute name="VALUE" x="96.52" y="-88.9" size="1.778" layer="96"/>
 </instance>
+<instance part="GND" gate="G$1" x="157.48" y="-60.96" smashed="yes">
+<attribute name="NAME" x="151.13" y="-57.785" size="1.778" layer="95"/>
+<attribute name="VALUE" x="151.13" y="-66.04" size="1.778" layer="96"/>
+</instance>
+<instance part="3V3" gate="G$1" x="157.48" y="-68.58" smashed="yes">
+<attribute name="NAME" x="151.13" y="-65.405" size="1.778" layer="95"/>
+<attribute name="VALUE" x="151.13" y="-73.66" size="1.778" layer="96"/>
+</instance>
+<instance part="5V" gate="G$1" x="157.48" y="-76.2" smashed="yes">
+<attribute name="NAME" x="151.13" y="-73.025" size="1.778" layer="95"/>
+<attribute name="VALUE" x="151.13" y="-81.28" size="1.778" layer="96"/>
+</instance>
+<instance part="PRB" gate="G$1" x="157.48" y="-83.82" smashed="yes">
+<attribute name="NAME" x="151.13" y="-80.645" size="1.778" layer="95"/>
+<attribute name="VALUE" x="151.13" y="-88.9" size="1.778" layer="96"/>
+</instance>
+<instance part="GND10" gate="1" x="137.16" y="-63.5" smashed="yes">
+<attribute name="VALUE" x="134.62" y="-66.04" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -1356,6 +1443,11 @@ Available under the Apache 2.0 License</text>
 <wire x1="99.06" y1="-73.66" x2="99.06" y2="-83.82" width="0.1524" layer="91"/>
 <pinref part="GND9" gate="1" pin="GND"/>
 </segment>
+<segment>
+<pinref part="GND" gate="G$1" pin="1"/>
+<wire x1="154.94" y1="-60.96" x2="137.16" y2="-60.96" width="0.1524" layer="91"/>
+<pinref part="GND10" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="PROBE" class="0">
 <segment>
@@ -1372,6 +1464,11 @@ Available under the Apache 2.0 License</text>
 <pinref part="U3" gate="G$1" pin="DRAIN"/>
 <wire x1="180.34" y1="12.7" x2="180.34" y2="35.56" width="0.1524" layer="91"/>
 <label x="185.42" y="33.02" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="PRB" gate="G$1" pin="1"/>
+<wire x1="154.94" y1="-83.82" x2="137.16" y2="-83.82" width="0.1524" layer="91"/>
+<label x="139.7" y="-83.82" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="HOME_B" class="0">
@@ -1460,6 +1557,11 @@ Available under the Apache 2.0 License</text>
 <wire x1="22.86" y1="-68.58" x2="22.86" y2="-60.96" width="0.1524" layer="91"/>
 <junction x="22.86" y="-60.96"/>
 </segment>
+<segment>
+<pinref part="3V3" gate="G$1" pin="1"/>
+<wire x1="154.94" y1="-68.58" x2="137.16" y2="-68.58" width="0.1524" layer="91"/>
+<label x="139.7" y="-68.58" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="VCC_5V" class="0">
 <segment>
@@ -1487,6 +1589,11 @@ Available under the Apache 2.0 License</text>
 <wire x1="99.06" y1="-60.96" x2="106.68" y2="-60.96" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="-68.58" x2="99.06" y2="-60.96" width="0.1524" layer="91"/>
 <junction x="99.06" y="-60.96"/>
+</segment>
+<segment>
+<pinref part="5V" gate="G$1" pin="1"/>
+<wire x1="154.94" y1="-76.2" x2="137.16" y2="-76.2" width="0.1524" layer="91"/>
+<label x="139.7" y="-76.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$4" class="0">
