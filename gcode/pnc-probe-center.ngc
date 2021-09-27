@@ -1,0 +1,189 @@
+o<pnc-probe-center> SUB
+
+( Pocket NC Cylindrical / Square Probe Subroutine )
+( )
+
+( Set the current working X/Y coordinates to be 0,0 at the center of )
+( the perimeter of a cylinder or square positioned roughly at the )
+( center of the current machine X/Y coordinates )
+( )
+( The initial X/Y position is used to determine which axis and )
+( which side is probed first.  It is recommended to start from the )
+( position closest to the Y gantry to avoid probe surprises when it )
+( is moved there later. )
+
+( The current coordinate frame may be any of G54-G59.3 and the )
+( current units may be either imperial or metric. )
+
+( Parameters )
+( )
+(  1: mode OD=1 ID=-1 )
+(  2: probe offset x mm )
+(  3: probe offset y mm )
+
+#<id_or_od_mode> = [#1]
+( These are calibrated per probe / machine pair )
+#<probe_offset_x_mm> = [#2]
+#<probe_offset_y_mm> = [#3]
+
+
+M70 ( save current modal state )
+
+G90 ( we use absolute mode for everything in this script )
+M5  ( make sure spindle is off )
+G40 ( disable cutter compensation )
+
+(--------------- CONFIG ---------------)
+
+#<probe_distance_mm> = 10
+
+
+(----------- convert constants ----------)
+
+o10 IF [#<_metric> EQ 1]
+#<probe_distance> = [#<probe_distance_mm>]
+#<probe_offset_x> = [#<probe_offset_x_mm>]
+#<probe_offset_y> = [#<probe_offset_y_mm>]
+o10 ELSE
+#<probe_distance> = [#<probe_distance_mm> / 25.4]
+#<probe_offset_x> = [#<probe_offset_x_mm> / 25.4]
+#<probe_offset_y> = [#<probe_offset_y_mm> / 25.4]
+o10 ENDIF
+
+
+(---------- initialization -------------)
+
+( Capture the initial coordinates )
+#<initial_x> = [#5420]
+#<initial_y> = [#5421]
+#<initial_z> = [#5422]
+
+o110 IF [#<initial_x> GT 0]
+#<initial_x_abs> = [#<initial_x>]
+o110 ELSE
+#<initial_x_abs> = [-1 * #<initial_x>]
+o110 ENDIF
+
+o120 IF [#<initial_y> GT 0]
+#<initial_y_abs> = [#<initial_y>]
+o120 ELSE
+#<initial_y_abs> = [-1 * #<initial_y>]
+o120 ENDIF
+
+( We use the subroutine parameters 10 and on as a transient array )
+( Here it stores the set of tests to perform )
+#10 = 1                 ( axis )
+#11 = 1                 ( direction to test )
+
+( the same three values repeated 3 more times )
+#12 = 1
+#13 = -1
+
+#14 = 2
+#15 = 1
+
+#16 = 2
+#17 = -1
+
+( Now, depending upon where our initial position is, re-order the )
+( above list accordingly. )
+
+o130 IF [#<initial_x_abs> GE #<initial_y_abs>]
+( We are going to start in the X axis )
+#<initial_axis> = 1
+#<radius> = [#<initial_x_abs>]
+#<initial_val> = [#<initial_x>]
+o130 ELSE
+( We are going to start in the Y axis )
+#<initial_axis> = 2
+#<radius> = [#<initial_y_abs>]
+#<initial_val> = [#<initial_y>]
+
+( swap #10-13 with #14-17 )
+#<index> = 0
+o131 REPEAT [4]
+#<temp> = #[10+#<index>]
+#[10+#<index>] = #[14+#<index>]
+#[14+#<index>] = #<temp>
+#<index> = [#<index> + 1]
+o131 ENDREPEAT
+
+o130 ENDIF
+
+( Now check to see if we need to change our initial direction )
+o140 IF [#<initial_val> GT 0]
+( Yes, we started positive, which means we need to probe negative )
+#11 = -1
+#13 = 1
+o140 ENDIF
+
+
+(---------------- probing loop --------------------)
+
+( Now we have our list of probe actions to take in #10-#17.  Loop over them. )
+#<pindex> = 0
+o200 REPEAT [4]
+#<axis> = [#[10 + [#<pindex> * 2]]]
+#<direction> = [#[11 + [#<pindex> * 2]]]
+
+#<start_pos> = [-1 * [#<radius>] * [#<direction>]]
+
+( The end of each probing results in a retract, however the first time )
+( through the loop we are down at probing height.  In either case we first )
+( move to the start of probing, which for the first time will be zeroing )
+( out the non-primary axis.  After that, then we set Z, which will be a )
+( noop for the first iteration )
+
+o320 IF [#<axis> EQ 1]
+G0 X[#<start_pos>] Y0
+o320 ELSE
+G0 X0 Y[#<start_pos>]
+o320 ENDIF
+
+( Now move the Z down into position )
+G0 Z[#<initial_z>]
+
+
+( We are in position to probe, so do it. )
+
+o<pnc-probe-xyz> CALL [#<axis>] [#<id_or_od_mode> * #<direction>] [#<probe_distance>]
+#[21+[3 * #<axis> + #<id_or_od_mode> * #<direction>]] = [#<_value>]
+
+( And now we retract back to the safe Z distance )
+( G53 is machine coordinates, we assume 0 machine Z is a safe place to )
+( travel always )
+o330 IF [#<id_or_od_mode> EQ 1]
+G53 G0 Z0
+o330 ENDIF
+
+( Increment our loop counter )
+#<pindex> = [#<pindex> + 1]
+
+o200 ENDREPEAT
+
+( At this point, we are retracted above an arbitrary test, and our )
+( 4 results can be found in X=#23 #25 and Y #26 #28 )
+
+#<center_x> = [0.5 * [[#23] + [#25]] + #<probe_offset_x>]
+#<center_y> = [0.5 * [[#26] + [#28]] + #<probe_offset_y>]
+
+( Home to the center point )
+G0 X[#<center_x>] Y[#<center_y>]
+
+( Older versions of linuxcnc report the coordinate system as 540-593 )
+( Newer versions report 0-9.  Try to handle both )
+o400 IF [[#<_coord_system> GE 540] AND [#<_coord_system> LE 590]]
+#<p_coord> = [[#<_coord_system> - 540] / 10]
+o400 ELSEIF [#<_coord_system> GE 591]
+#<p_coord> = [6 + #<_coord_system> - 1]
+o400 ELSE
+#<p_coord> = [#<_coord_system>]
+o400 ENDIF
+
+
+( And now set our current position to be 0, 0 )
+G10 L20 P[#<p_coord>] X0 Y0
+
+M72  ( restore current modal state )
+
+o<pnc-probe-center> ENDSUB

@@ -1,22 +1,19 @@
-( Pocket NC OD Probe Routine )
+( Pocket NC ID Probe Routine )
 ( )
 ( Set the current working X/Y coordinates to be 0,0 at the center of )
 ( the outer diameter of a circle positioned roughly at the center of the )
 ( current machine X/Y coordinates )
 ( )
 ( The initial X/Y position is used to determine which axis and )
-( which side is probed first.  It is recommended to start from the )
-( position closest to the Y gantry to avoid probe surprises when it )
-( is moved there later. )
+( which side is probed first. )
 ( )
-( The Z position will be retracted to machine 0 in between probes, and )
-( will be left at machine 0 at the end. )
+( The Z position will not be changed during this script. )
 
 ( The current coordinate frame may be any of G54-G59.3 and the )
 ( current units may be either imperial or metric. )
 
 M5  ( make sure spindle is off )
 
-o<pnc-probe-center> CALL [1] [-0.01] [-0.11]
+o<pnc-probe-center> CALL [-1] [-0.01] [-0.11]
 
 M30
