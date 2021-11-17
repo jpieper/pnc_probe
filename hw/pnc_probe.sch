@@ -1246,7 +1246,7 @@ Source: &lt;a href=http://de.farnell.com/molex/0446200002/buchse-rj45-geschirmt/
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R3" library="mfpassives" deviceset="RESISTOR" device="_0603" value="4.7k">
 <attribute name="HOUSEPART" value="YES"/>
-<attribute name="MPN" value="MF-RES-0603-100K"/>
+<attribute name="MPN" value="MF-RES-0603-4.7K"/>
 </part>
 <part name="U1" library="pnc_probe" deviceset="TPS6024X" device="_VSSOP8"/>
 <part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
