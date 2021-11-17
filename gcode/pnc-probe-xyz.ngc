@@ -24,9 +24,9 @@ o<pnc-probe-xyz> SUB
 
 (--------------------- CONFIG ----------------------)
 #<probe_tip_diameter_mm> = 2
-#<retract_mm> = 2
+#<retract_mm> = 1
 #<probe_feed1_mm_min> = 500
-#<probe_feed2_mm_min> = 50
+#<probe_feed2_mm_min> = 20
 
 
 (--------- convert constants into current unit system ---------)

@@ -14,7 +14,6 @@
 
 M5  ( make sure spindle is off )
 
-( The second and third arguments are a calibrated offset )
-o<pnc-probe-center> CALL [-1] [-0.01] [-0.09]
+o<pnc-probe-center> CALL [-1]
 
 M30

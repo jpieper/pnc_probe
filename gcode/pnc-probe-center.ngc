@@ -18,13 +18,13 @@ o<pnc-probe-center> SUB
 ( Parameters )
 ( )
 (  1: mode OD=1 ID=-1 )
-(  2: probe offset x mm )
-(  3: probe offset y mm )
 
 #<id_or_od_mode> = [#1]
 ( These are calibrated per probe / machine pair )
-#<probe_offset_x_mm> = [#2]
-#<probe_offset_y_mm> = [#3]
+
+
+#<probe_offset_x_mm> = [ 0.094]
+#<probe_offset_y_mm> = [-0.020]
 
 
 M70 ( save current modal state )
@@ -180,6 +180,17 @@ o400 ELSE
 #<p_coord> = [#<_coord_system>]
 o400 ENDIF
 
+#<diameter_x> = [[#25] - [#23]]
+#<diameter_y> = [[#28] - [#26]]
+#<diameter> = [0.5 * [#<diameter_x> + #<diameter_y>]]
+o500 IF [[#<diameter>] LT 0]
+#<diameter> = [-1.0 * #<diameter>]
+o500 ENDIF
+
+(DEBUG, Probe dia #<diameter> - center #<center_x>, #<center_y>)
+
+( Wait a bit to ensure that we have settled )
+G4 P0.5
 
 ( And now set our current position to be 0, 0 )
 G10 L20 P[#<p_coord>] X0 Y0
