@@ -23,8 +23,18 @@ o<pnc-probe-center> SUB
 ( These are calibrated per probe / machine pair )
 
 
-#<probe_offset_x_mm> = [ 0.094]
-#<probe_offset_y_mm> = [-0.020]
+o05 if [EXISTS[#<_ini[PROBE]PROBE_X_OFFSET_MM>]]
+    #<probe_offset_x_mm> = #<_ini[PROBE]PROBE_X_OFFSET_MM>
+o05 else
+    #<probe_offset_x_mm> = [0.0]
+o05 endif
+
+o06 if [EXISTS[#<_ini[PROBE]PROBE_Y_OFFSET_MM>]]
+    #<probe_offset_y_mm> = #<_ini[PROBE]PROBE_Y_OFFSET_MM>
+o06 else
+    #<probe_offset_y_mm> = [0.0]
+o06 endif
+
 
 
 M70 ( save current modal state )
