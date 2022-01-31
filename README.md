@@ -49,18 +49,18 @@ rsync -Pv ncfiles subroutines pocketnc@192.168.6.2:
 
 ### Kinetic (current) ###
 
- A. Config Tab
- B. Server
- C. INI OVERLAY
- D. EDIT OVERLAY (bottom right)
- E. If RS274NGC is not already in the list of groups, use the '+' button to add it.
- F. Ensure the following key is set as follows:
+ * Config Tab
+ * Server
+ * INI OVERLAY
+ * EDIT OVERLAY (bottom right)
+ * If RS274NGC is not already in the list of groups, use the '+' button to add it.
+ * Ensure the following key is set as follows:
 
 ```
 SUBROUTINE_PATH=/opt/pocketnc/Settings/subroutines:/home/pocketnc/subroutines
 ```
 
- G. If you had to change anything, click "REBOOT MACHINE".
+ * If you had to change anything, click "REBOOT MACHINE".
 
 ### Legacy ###
 
