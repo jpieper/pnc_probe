@@ -47,7 +47,13 @@ rsync -Pv ncfiles subroutines pocketnc@192.168.6.2:
 
 2. Depending upon your machine version, you may need to add a .ini overlay.
 
-### Kinetic (current) ###
+### Kinetic ###
+
+Modern versions of the Kinetic interface require no changes.
+
+### Kinetic (pre 5.1.2) ###
+
+Older versions of Kinetic require the following overlay added.
 
  * Config Tab
  * Server
